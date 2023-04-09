@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomEditTextMessageIcon">
+        <attr name="editTextHint" format="string" />
+        <attr name="editTextColor" format="color" />
+        <attr name="editTextSize" format="dimension" />
+        <attr name="editTextPaddingStart" format="dimension" />
+        <attr name="editTextPaddingEnd" format="dimension" />
+        <attr name="editTextPaddingTop" format="dimension" />
+        <attr name="editTextPaddingBottom" format="dimension" />
+        <attr name="editTextMaxLength" format="integer" />
+        <attr name="editTextCurrency" format="boolean" />
+        <attr name="editTextFocusable" format="boolean" />
+        <attr name="editTextReadOnly" format="boolean" />
+        <attr name="editTextReadOnlyWithLine" format="boolean" />
+        <attr name="editTextInputType" format="enum">
+            <enum name="textSingle" value="1" />
+            <enum name="textMultiLine" value="2" />
+            <enum name="numberSingle" value="9" />
+            <enum name="number" value="3" />
+            <enum name="numberDecimal" value="4" />
+            <enum name="date" value="5" />
+            <enum name="phone" value="6" />
+            <enum name="none" value="7" />
+            <enum name="textCapCharacters" value="8" />
+        </attr>
+        <attr name="editTextImeOptions" format="enum">
+            <enum name="actionDone" value="1" />
+            <enum name="actionSend" value="2" />
+            <enum name="actionNext" value="3" />
+            <enum name="actionNone" value="4" />
+            <enum name="actionSearch" value="5" />
+        </attr>
+        <attr name="editTextAlign" format="enum">
+            <enum name="start" value="1" />
+            <enum name="end" value="2" />
+            <enum name="center" value="3" />
+        </attr>
+        <attr name="editTextYearMax" format="integer" />
+        <attr name="editTextYearMin" format="integer" />
+        <attr name="editTextFormatDate" format="enum">
+            <enum name="diaMesAnio" value="1" />
+            <enum name="mesAnio" value="2" />
+        </attr>
+
+        <attr name="textViewColor" format="color" />
+        <attr name="textViewSize" format="dimension" />
+        <attr name="textViewMultiline" format="boolean" />
+        <attr name="textViewVisible" format="boolean" />
+        <attr name="textViewText" format="string" />
+
+        <attr name="imageViewScr" format="reference" />
+        <attr name="imageViewColor" format="color" />
+        <attr name="imageViewSize" format="dimension" />
+        <attr name="imageViewVisible" format="boolean" />
+
+    </declare-styleable>
+
+</resources>

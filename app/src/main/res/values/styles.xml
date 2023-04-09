@@ -1,0 +1,96 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/background_header</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/blue_grey_600</item>
+        <item name="android:dialogTheme">@style/Dialog.Theme</item>
+        <item name="tabTextColor">@color/colorWhite</item>
+        <item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>
+        <item name="materialCalendarFullscreenTheme">
+            @style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen
+        </item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar
+        </item>
+    </style>
+
+    <style name="AppTheme.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/primaryColorItem</item>
+        <item name="android:textSize">8sp</item>
+        <item name="tabIndicatorColor">#FFFFFF</item>
+    </style>
+
+    <!--<style name="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextColor">@color/colorBlack</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorPrimaryDark</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabInlineLabel">true</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabSelectedTextColor">@color/colorWhite</item>
+    </style>-->
+
+    <style name="Dialog.Theme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarText" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="textviewStyle">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColorItem</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColorItem</item>
+        <item name="colorAccent">@color/accentColorItem</item>
+
+        <item name="android:windowBackground">#EEEEEE</item>
+    </style>
+
+    <style name="Theme_Dialog_Translucent" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="myTextInputLabel" parent="Widget.Design.TextInputLayout">
+        <item name="colorAccent">@color/background_header</item>
+        <item name="colorControlNormal">@color/background_header</item>
+        <item name="colorControlActivated">@color/custom_text</item>
+    </style>
+
+
+</resources>

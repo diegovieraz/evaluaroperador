@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EvaluarOperador</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="DATO_OBLIGATORIO">Dato obligatorio.</string>
+    <string name="cancelar_es">CANCELAR</string>
+    <string name="aceptar_es">ACEPTAR</string>
 </resources>

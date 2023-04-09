@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradiente"
+    tools:context=".ui.view.fragments.LoginFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="100dp"
+    android:paddingHorizontal="50dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registro de Evaluaciones a Operadores"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"/>
+
+    <com.diegoviera.evaluaroperador.ui.Utils.CustomEditTextMessageIcon
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:editTextHint="Usuario"
+        app:editTextMaxLength="15"
+        android:layout_marginBottom="15dp"/>
+
+    <com.diegoviera.evaluaroperador.ui.Utils.CustomEditTextMessageIcon
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:editTextHint="Contraseña"
+        app:editTextMaxLength="15"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/button_bg_inverse"
+        android:text="INGRESAR"/>
+
+
+
+
+
+</LinearLayout>

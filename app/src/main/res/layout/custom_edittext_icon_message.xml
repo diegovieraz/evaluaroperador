@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:paddingStart="@dimen/content_inset_15"
+            android:paddingLeft="@dimen/content_inset_16"
+            android:paddingBottom="@dimen/content_inset_17"
+            android:paddingEnd="@dimen/content_inset_15"
+            android:textColor="@drawable/edittext_icon_message_selector"
+            android:background="@color/colorWhite"
+            android:textSize="@dimen/textSize_16" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/content_inset_40"
+        android:layout_height="@dimen/content_inset_40"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:visibility="gone"
+        android:paddingTop="@dimen/content_inset_10"
+        android:paddingBottom="@dimen/content_inset_10"
+        android:paddingStart="@dimen/content_inset_10"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout"
+        app:srcCompat="@drawable/ic_warning_circle_red" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset_4"
+        android:layout_marginTop="@dimen/content_inset_8"
+        android:layout_marginEnd="10dp"
+        android:singleLine="true"
+        android:textColor="@color/red_A000"
+        android:textSize="@dimen/textSize_14"
+        android:visibility="gone"
+        android:text="@string/DATO_OBLIGATORIO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+</merge>

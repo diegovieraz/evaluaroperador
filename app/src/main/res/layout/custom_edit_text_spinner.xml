@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_spn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:hint="@null"
+        android:theme="@style/myTextInputLabel">
+
+        <AutoCompleteTextView
+            style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+            android:id="@+id/ed_spn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/content_inset_10"
+            android:paddingBottom="@dimen/content_inset_17"
+            android:paddingEnd="@dimen/content_inset_10"
+            android:fontFamily="@font/roboto_regular"
+            android:drawableRight="@drawable/ic_menu_down_custom"
+            android:drawableTint="@color/dropdown_grey"
+            android:drawablePadding="@dimen/content_inset_50"
+            android:inputType="text"
+            android:textSize="@dimen/content_inset_18"
+            android:editable="false"
+            android:imeOptions="actionNext"
+            android:cursorVisible="false"
+            android:background="@color/colorWhite"
+            android:focusable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/content_inset_4"
+        android:layout_marginTop="@dimen/content_inset_8"
+        android:layout_marginEnd="10dp"
+        android:singleLine="true"
+        android:textColor="@color/red_A000"
+        android:textSize="@dimen/textSize_14"
+        android:visibility="gone"
+        android:text="@string/DATO_OBLIGATORIO" />
+
+</LinearLayout>
