@@ -2,6 +2,9 @@ package com.diegoviera.evaluaroperador.ui.Utils;
 
 public class Constantes {
 
+    //Database
+    public static final String DATABASE_NAME = "assessment_db";
+
     public static final String EMPTY_STRING = "";
     public static final String SPACING = "\\s";
     public static final String SPACING_ = " ";

@@ -4,13 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/bg_gradiente_light"
+    android:paddingHorizontal="50dp"
+    android:orientation="vertical"
     tools:context=".ui.view.fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/btnRegistrarEvaluacion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Pantalla de menú" />
+        android:layout_height="100dp"
+        android:background="@drawable/button_bg_inverse"
+        android:layout_marginBottom="20dp"
+        android:text="Registrar Evaluaciones"/>
+
+    <Button
+        android:id="@+id/btnConsultarEvaluacion"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/button_bg_inverse"
+        android:layout_marginBottom="20dp"
+        android:text="Consultar Evaluaciones"/>
+
+    <Button
+        android:id="@+id/btnGenerarReportes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/button_bg_inverse"
+        android:layout_marginBottom="20dp"
+        android:text="Generar Reportes"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.diegoviera.evaluaroperador.R;
+import com.diegoviera.evaluaroperador.di.Injectable;
+import com.diegoviera.evaluaroperador.domain.model.EvaluadorModel;
 import com.diegoviera.evaluaroperador.ui.Utils.CustomEditTextMessageIcon;
+import com.diegoviera.evaluaroperador.ui.viewmodel.EvaluadorViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,12 +34,13 @@ import dagger.android.support.HasSupportFragmentInjector;
  * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends BaseFragment implements HasSupportFragmentInjector {
+public class LoginFragment extends BaseFragment implements HasSupportFragmentInjector, Injectable {
 
     @Inject
-    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
-    @Inject
     ViewModelProvider.Factory viewModelFactory;
+
+    //VIEW MODELS
+    private EvaluadorViewModel evaluadorViewModel;
 
     @BindView(R.id.etUsuario)
     CustomEditTextMessageIcon etUsuario;
@@ -68,11 +76,25 @@ public class LoginFragment extends BaseFragment implements HasSupportFragmentInj
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        evaluadorViewModel = ViewModelProviders.of(this, viewModelFactory).get(EvaluadorViewModel.class);
         initView();
     }
 
     private void initView() {
+        //PRIMERO CREAMOS LOS USUARIOS PARA LA BD
+        createEvaluadores();
+    }
 
+    private void createEvaluadores() {
+        //LISTAMOS LOS EVALUADORES
+        List<EvaluadorModel> evaluadorModels = new ArrayList<>();
+        EvaluadorModel eval01 = new EvaluadorModel(1,"user01","123456","Juan Pedro","Sanchez Lopez","Cargo 01","Negocio 01");
+        EvaluadorModel eval02 = new EvaluadorModel(2,"user02","123456","Raul Augusto","Viera Zegarra","Cargo 02","Negocio 01");
+        EvaluadorModel eval03 = new EvaluadorModel(3,"user03","123456","Maria Julia","Gamboa García","Cargo 03","Negocio 02");
+        evaluadorModels.add(eval01);
+        evaluadorModels.add(eval02);
+        evaluadorModels.add(eval03);
+        evaluadorViewModel.insertAllEvaluadores(evaluadorModels);
     }
 
     @Override
