@@ -23,6 +23,7 @@
             <enum name="phone" value="6" />
             <enum name="none" value="7" />
             <enum name="textCapCharacters" value="8" />
+            <enum name="textPassword" value="10" />
         </attr>
         <attr name="editTextImeOptions" format="enum">
             <enum name="actionDone" value="1" />

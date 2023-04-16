@@ -1,5 +1,7 @@
 package com.diegoviera.evaluaroperador.ui.view.fragments;
 
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.evaluadoLog;
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,13 +12,17 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.diegoviera.evaluaroperador.R;
 import com.diegoviera.evaluaroperador.di.Injectable;
+import com.diegoviera.evaluaroperador.ui.Utils.Constantes;
 import com.diegoviera.evaluaroperador.ui.viewmodel.EvaluadorViewModel;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -28,6 +34,18 @@ public class HomeFragment extends BaseFragment implements Injectable {
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
+
+    @BindView(R.id.tv_evaluador)
+    TextView tvEvaluador;
+    @BindView(R.id.tv_cargo)
+    TextView tvCargo;
+
+    @BindView(R.id.btnRegistrarEvaluacion)
+    Button btnRegistrarEvaluacion;
+    @BindView(R.id.btnConsultarEvaluacion)
+    Button btnConsultarEvaluacion;
+    @BindView(R.id.btnGenerarReportes)
+    Button btnGenerarReportes;
 
     //VIEW MODELS
     private EvaluadorViewModel evaluadorViewModel;
@@ -67,6 +85,29 @@ public class HomeFragment extends BaseFragment implements Injectable {
     }
 
     private void initView() {
+        //SETEAR DATOS EVALUADOR
+        tvEvaluador.setText("Evaluador: "+evaluadoLog.getNombre()+" "+evaluadoLog.getApellido());
+        tvCargo.setText("Cargo: "+evaluadoLog.getCargo());
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initEvents();
+    }
+
+    private void initEvents() {
+        //REDIRECCIONAMIENTO BOTONES
+        btnRegistrarEvaluacion.setOnClickListener(view -> {
+            goToFragment(RegEvaluacionFragment.newInstance(new Bundle()));
+        });
+
+        btnConsultarEvaluacion.setOnClickListener(view -> {
+
+        });
+
+        btnGenerarReportes.setOnClickListener(view -> {
+
+        });
     }
 }

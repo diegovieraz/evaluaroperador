@@ -3,35 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@drawable/bg_gradiente_light"
-    android:paddingHorizontal="50dp"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.view.fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/btnRegistrarEvaluacion"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/button_bg_inverse"
-        android:layout_marginBottom="20dp"
-        android:text="Registrar Evaluaciones"/>
+        android:layout_height="50dp"
+        android:paddingTop="0dp">
 
-    <Button
-        android:id="@+id/btnConsultarEvaluacion"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/button_bg_inverse"
-        android:layout_marginBottom="20dp"
-        android:text="Consultar Evaluaciones"/>
+        <include layout="@layout/formato_titulos" />
+    </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnGenerarReportes"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/button_bg_inverse"
-        android:layout_marginBottom="20dp"
-        android:text="Generar Reportes"/>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp">
+
+        <Button
+            android:id="@+id/btnRegistrarEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_bg_inverse"
+            android:text="Registrar Evaluaciones"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnConsultarEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_bg_inverse"
+            android:text="Consultar Evaluaciones"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnGenerarReportes"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_bg_inverse"
+            android:text="Generar Reportes"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -10,12 +10,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
+import com.diegoviera.evaluaroperador.data.local.dao.EvaluadoDAO;
 import com.diegoviera.evaluaroperador.data.local.dao.EvaluadorDAO;
+import com.diegoviera.evaluaroperador.data.local.entity.EvaluadoEntity;
 import com.diegoviera.evaluaroperador.data.local.entity.EvaluadorEntity;
 import com.diegoviera.evaluaroperador.ui.Utils.Constantes;
 
 @Database(entities = {
-        EvaluadorEntity.class
+        EvaluadorEntity.class,
+        EvaluadoEntity.class
 }, version = 1)
 public abstract class AssessmentDataBase extends RoomDatabase {
 
@@ -34,6 +37,8 @@ public abstract class AssessmentDataBase extends RoomDatabase {
     }
 
     public abstract EvaluadorDAO getEvaluadorDAO();
+
+    public abstract EvaluadoDAO getEvaluadoDAO();
 
     //---------------------------------GENERAL-------------------------------
 

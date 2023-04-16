@@ -38,7 +38,7 @@ public class EvaluadorViewModel extends AndroidViewModel {
     }
 
     public void insertAllEvaluadores(List<EvaluadorModel> evaluadorModels) {
-        evaluadorRepository.registraEvaluador(evaluadorModels);
+        evaluadorRepository.registraEvaluadores(evaluadorModels);
     }
 
 

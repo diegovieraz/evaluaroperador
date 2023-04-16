@@ -1,5 +1,22 @@
 package com.diegoviera.evaluaroperador.ui.view.fragments;
 
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval01;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval02;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval03;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval04;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval05;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval06;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval07;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval08;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval09;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval10;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval11;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval12;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval13;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.eval14;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.evaluadoLog;
+import static com.diegoviera.evaluaroperador.ui.Utils.Constantes.evaluadorModels;
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -7,11 +24,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.diegoviera.evaluaroperador.R;
 import com.diegoviera.evaluaroperador.di.Injectable;
@@ -49,6 +69,7 @@ public class LoginFragment extends BaseFragment implements HasSupportFragmentInj
     @BindView(R.id.btnIniciarSesion)
     Button btnIngresar;
 
+
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -81,19 +102,27 @@ public class LoginFragment extends BaseFragment implements HasSupportFragmentInj
     }
 
     private void initView() {
+        etPassword.setEditTextInputType(10);
         //PRIMERO CREAMOS LOS USUARIOS PARA LA BD
         createEvaluadores();
     }
 
     private void createEvaluadores() {
         //LISTAMOS LOS EVALUADORES
-        List<EvaluadorModel> evaluadorModels = new ArrayList<>();
-        EvaluadorModel eval01 = new EvaluadorModel(1,"user01","123456","Juan Pedro","Sanchez Lopez","Cargo 01","Negocio 01");
-        EvaluadorModel eval02 = new EvaluadorModel(2,"user02","123456","Raul Augusto","Viera Zegarra","Cargo 02","Negocio 01");
-        EvaluadorModel eval03 = new EvaluadorModel(3,"user03","123456","Maria Julia","Gamboa García","Cargo 03","Negocio 02");
         evaluadorModels.add(eval01);
         evaluadorModels.add(eval02);
         evaluadorModels.add(eval03);
+        evaluadorModels.add(eval04);
+        evaluadorModels.add(eval05);
+        evaluadorModels.add(eval06);
+        evaluadorModels.add(eval07);
+        evaluadorModels.add(eval08);
+        evaluadorModels.add(eval09);
+        evaluadorModels.add(eval10);
+        evaluadorModels.add(eval11);
+        evaluadorModels.add(eval12);
+        evaluadorModels.add(eval13);
+        evaluadorModels.add(eval14);
         evaluadorViewModel.insertAllEvaluadores(evaluadorModels);
     }
 
@@ -106,8 +135,29 @@ public class LoginFragment extends BaseFragment implements HasSupportFragmentInj
     private void initEvents() {
         //ACCIÓN INGRESAR
         btnIngresar.setOnClickListener(view -> {
-            goToFragment(HomeFragment.newInstance(new Bundle()));
+            if (validarCampos()){
+                Toast.makeText(getContext(),"Usuario correcto.",Toast.LENGTH_LONG).show();
+                goToFragment(HomeFragment.newInstance(new Bundle()));
+            } else {
+                Toast.makeText(getContext(),"Usuario o password incorrecto.",Toast.LENGTH_LONG).show();
+            }
         });
 
+    }
+
+    private boolean validarCampos() {
+        boolean validUser = false;
+        //SE CONSULTA A LA BD SI EL USUARIO EXISTE
+        String user = etUsuario.getText();
+        String password = etPassword.getText();
+        EvaluadorModel evaluador = evaluadorViewModel.getEvaluador(user,password);
+        if (evaluador!=null){
+            if (evaluador.getId()!=0){
+                evaluadoLog = evaluador;
+                validUser = true;
+            }
+        }
+
+        return validUser;
     }
 }

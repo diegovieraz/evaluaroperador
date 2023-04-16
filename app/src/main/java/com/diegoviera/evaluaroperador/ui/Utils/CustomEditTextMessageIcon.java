@@ -89,6 +89,7 @@ public class CustomEditTextMessageIcon extends ConstraintLayout {
     private static final int TEXT_NONE = 7;
     private static final int TEXT_CAPS= 8;
     private static final int TEXT_NUMBER_SINGLE = 9;
+    private static final int TEXT_PASSWORD = 10;
 
     private static final int ACTION_DONE = 1;
     private static final int ACTION_SEND = 2;
@@ -316,6 +317,9 @@ public class CustomEditTextMessageIcon extends ConstraintLayout {
                 break;
             case TEXT_CAPS:
                 this.textInputEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                break;
+            case TEXT_PASSWORD:
+                this.textInputEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 break;
         }
     }

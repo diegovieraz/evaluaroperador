@@ -26,6 +26,9 @@ public class EvaluadorEntity {
         this.negocio = negocio;
     }
 
+    public EvaluadorEntity() {
+    }
+
     public int getId() {
         return id;
     }

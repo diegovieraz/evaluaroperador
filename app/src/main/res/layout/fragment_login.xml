@@ -42,6 +42,7 @@
         android:layout_height="60dp"
         app:editTextHint="Contraseña"
         app:editTextMaxLength="15"
+        app:editTextInputType="textPassword"
         android:layout_marginBottom="20dp"/>
 
     <Button

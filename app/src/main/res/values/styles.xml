@@ -92,5 +92,14 @@
         <item name="colorControlActivated">@color/custom_text</item>
     </style>
 
+    <!-- TÍTULO-->
+    <style name="textview_cabecera_titulo">
+        <item name="android:padding">4dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>

@@ -2,9 +2,13 @@ package com.diegoviera.evaluaroperador.data.repository;
 
 import android.os.AsyncTask;
 
+import com.diegoviera.evaluaroperador.data.local.dao.EvaluadoDAO;
 import com.diegoviera.evaluaroperador.data.local.dao.EvaluadorDAO;
+import com.diegoviera.evaluaroperador.data.local.entity.EvaluadoEntity;
 import com.diegoviera.evaluaroperador.data.local.entity.EvaluadorEntity;
+import com.diegoviera.evaluaroperador.domain.mapper.EvaluadoMapper;
 import com.diegoviera.evaluaroperador.domain.mapper.EvaluadorMapper;
+import com.diegoviera.evaluaroperador.domain.model.EvaluadoModel;
 import com.diegoviera.evaluaroperador.domain.model.EvaluadorModel;
 
 import java.util.ArrayList;
@@ -17,10 +21,15 @@ import javax.inject.Singleton;
 public class EvaluadorRepository {
 
     private EvaluadorDAO evaluadorDAO;
+    private EvaluadoDAO evaluadoDAO;
 
     @Inject
-    public EvaluadorRepository(EvaluadorDAO evaluadorDAO) {
+    public EvaluadorRepository(
+            EvaluadorDAO evaluadorDAO,
+            EvaluadoDAO evaluadoDAO
+    ) {
         this.evaluadorDAO = evaluadorDAO;
+        this.evaluadoDAO = evaluadoDAO;
     }
 
     //-------------------EVALUADORES-------------------
@@ -68,7 +77,9 @@ public class EvaluadorRepository {
         LoginParams loginParams = new LoginParams(usuario, password);
         try {
             EvaluadorEntity evaluadorEntity = new GetEvaluadorAsyncTask(evaluadorDAO).execute(loginParams).get();
-            evaluadorModel = EvaluadorMapper.evaluadorEntityToModel(evaluadorEntity);
+            if (evaluadorEntity!=null){
+                evaluadorModel = EvaluadorMapper.evaluadorEntityToModel(evaluadorEntity);
+            }
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -88,9 +99,9 @@ public class EvaluadorRepository {
         }
     }
 
-    //REGISTRO EVALUADOR
+    //REGISTRO EVALUADORES
 
-    public void registraEvaluador(List<EvaluadorModel> evaluadorModelList) {
+    public void registraEvaluadores(List<EvaluadorModel> evaluadorModelList) {
         EvaluadorEntity evaluadorEntity;
         List<EvaluadorEntity> evaluadorEntities = new ArrayList<>();
         for (EvaluadorModel item : evaluadorModelList) {
@@ -118,5 +129,117 @@ public class EvaluadorRepository {
             return null;
         }
     }
+
+    //---------------------EVALUADOS---------------------
+
+    //CONSULTA TOTAL EVALUADOS
+
+    public List<EvaluadoModel> getAllEvaluados() {
+        List<EvaluadoModel> evaluadoModelList = new ArrayList<>();
+        try {
+            List<EvaluadoEntity> evaluadoEntities = new GetAllEvaluadoAsyncTask(evaluadoDAO).execute().get();
+            evaluadoModelList = EvaluadoMapper.evaluadoEntityToModelsList(evaluadoEntities);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return evaluadoModelList;
+    }
+
+    private static class GetAllEvaluadoAsyncTask extends AsyncTask<Void, Void, List<EvaluadoEntity>> {
+        private EvaluadoDAO evaluadoDAO;
+
+        GetAllEvaluadoAsyncTask(EvaluadoDAO evaluadoDAO) {
+            this.evaluadoDAO = evaluadoDAO;
+        }
+
+        @Override
+        protected List<EvaluadoEntity> doInBackground(Void... params) {
+            return evaluadoDAO.getAll();
+        }
+    }
+
+    //CONSULTA INDIVIDUAL EVALUADO X ID
+
+    public EvaluadoModel getEvaluadorXId(Integer id) {
+        EvaluadoModel evaluadoModel = new EvaluadoModel();
+        try {
+            EvaluadoEntity evaluadoEntity = new GetEvaluadoXDniAsyncTask(evaluadoDAO).execute(id).get();
+        }  catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return evaluadoModel;
+    }
+
+    private static class GetEvaluadoXDniAsyncTask extends AsyncTask<Integer, Void, EvaluadoEntity> {
+        private EvaluadoDAO evaluadoDAO;
+
+        GetEvaluadoXDniAsyncTask(EvaluadoDAO evaluadoDAO) {
+            this.evaluadoDAO = evaluadoDAO;
+        }
+
+
+        @Override
+        protected EvaluadoEntity doInBackground(final Integer... params) {
+            return evaluadoDAO.getEvaluadoXId(params[0]);
+        }
+    }
+
+    //CONSULTA INDIVIDUAL EVALUADO X NOMBRE
+
+    public EvaluadoModel getEvaluadorXNombre(String nombre) {
+        EvaluadoModel evaluadoModel = new EvaluadoModel();
+        try {
+            EvaluadoEntity evaluadoEntity = new GetEvaluadoXNombreAsyncTask(evaluadoDAO).execute(nombre).get();
+        }  catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return evaluadoModel;
+    }
+
+    private static class GetEvaluadoXNombreAsyncTask extends AsyncTask<String, Void, EvaluadoEntity> {
+        private EvaluadoDAO evaluadoDAO;
+
+        GetEvaluadoXNombreAsyncTask(EvaluadoDAO evaluadoDAO) {
+            this.evaluadoDAO = evaluadoDAO;
+        }
+
+
+        @Override
+        protected EvaluadoEntity doInBackground(final String... params) {
+            return evaluadoDAO.getEvaluadoXNombre(params[0]);
+        }
+    }
+
+    //REGISTRO EVALUADOS
+
+    public void registraEvaluados(List<EvaluadoModel> evaluadoModelList) {
+        EvaluadoEntity evaluadoEntity;
+        List<EvaluadoEntity> evaluadoEntities = new ArrayList<>();
+        for (EvaluadoModel item : evaluadoModelList) {
+            evaluadoEntity = EvaluadoMapper.evaluadoModelToEntity(item);
+            evaluadoEntities.add(evaluadoEntity);
+        }
+        try {
+            new InsertEvaluadoAsyncTask(evaluadoDAO).execute(evaluadoEntities).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class InsertEvaluadoAsyncTask extends AsyncTask<List<EvaluadoEntity>, Void, Void> {
+        private EvaluadoDAO evaluadoDAO;
+
+        InsertEvaluadoAsyncTask(EvaluadoDAO evaluadoDAO) {
+            this.evaluadoDAO = evaluadoDAO;
+        }
+
+
+        @Override
+        protected Void doInBackground(final List<EvaluadoEntity>... lists) {
+            evaluadoDAO.insertEvaluados(lists[0]);
+            return null;
+        }
+    }
+
 
 }
